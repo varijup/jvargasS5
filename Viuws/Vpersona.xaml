@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="jvargasS5.Viuws.Vpersona"
+             Title="Vpersona">
+    <ScrollView>
+        <VerticalStackLayout>
+
+
+            <Image Source="logouisrael2.png"
+                   Aspect= "Center"></Image>
+            <Label
+                Text=" SEMANA 5: BASE DE DATOS"
+                FontSize="20"
+                HorizontalTextAlignment="Center"/>
+            <Label
+                Text=" INGRESE UN NOMBRE"
+                FontSize="20"
+                HorizontalTextAlignment="Center"/>
+
+            <Entry x:Name=" txtPersona"
+                   Placeholder="Ingrese un Nombre"/>
+
+            <Grid Padding="8" RowSpacing="2" >
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnAgregar"
+                        Text="Agregar Persona"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Clicked="btnAgregar_Cliked"
+                        HorizontalOptions="Center"/>
+
+                <Label x:Name="lblStatus"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       TextColor="Red"/>
+
+                <Button x:Name="btnObtener"
+                        Text="Listar Persona"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Clicked="btnObtener_Clicked"
+                        HorizontalOptions="Center"/>
+
+                <CollectionView x:Name="Listapersona"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                SelectionMode="Single"
+                                SelectionChanged="Listapersona_SelectionChanged">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" Grid.Column="0"/>
+                                <Label Text=" " Grid.Column="0" Margin="15,9"/>
+                                <Label Text="{Binding Name}" Grid.Column="4"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Botón para actualizar una persona -->
+                            <ImageButton Source="boton_modificar.png"
+                                         x:Name="btnModificar"
+                                         Grid.Row="3"
+                                         Grid.Column="1"
+                                         Clicked="btnModificar_Clicked"
+                                         Aspect="Fill"
+                                         BackgroundColor="Transparent"
+                                         MaximumHeightRequest="50"
+                                         MaximumWidthRequest="40"
+                                         BorderWidth="2"
+                                         Padding="5"
+                                         IsEnabled="false"/>
+
+                            <!-- Botón para eliminar una persona -->
+
+                            <ImageButton Source="boton_delete.png"
+                                         x:Name="btnEliminar"
+                                         Grid.Row="3"
+                                         Grid.Column="2"
+                                         Clicked="btnEliminar_Clicked"
+                                         Aspect="Fill"
+                                         BackgroundColor="Transparent"
+                                         MaximumHeightRequest="50"
+                                         MaximumWidthRequest="50"
+                                         BorderWidth="2"
+                                         Padding="5"
+                                         IsEnabled="True" />
+
+
+
+
+                        </Grid>
+                    </CollectionView.Footer>
+                </CollectionView>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
